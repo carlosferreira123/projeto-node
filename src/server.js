@@ -1,8 +1,19 @@
 import  http from 'http'
 
-const server =  http.createServer((req, res) => {
-return res.end ('Hello Wold')
 
+
+const server =  http.createServer((req, res) => {
+const {method, url} = req
+
+ if (method === 'GET' && url === '/users') {
+  return res.end('Listagem de usuarios')
+ }
+
+ if (method === 'POST' && url === '/users'){
+  return res.end('Criação de usuários')
+ }
+
+ return  res.end('Hello world')
 })
 
-server.listen(3334)
+server.listen(3333)
